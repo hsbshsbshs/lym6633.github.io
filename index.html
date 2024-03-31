@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前后端结合云签到</title>
+    <link rel="stylesheet" href="/static/pkg/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/static/pkg/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <Script src="/static/js/jquery-3.7.1.min.js"></Script>
+</head>
+<style>
+    body {
+        background: #C0C0C0;
+    }
+
+    .card {
+        margin: 10vh auto;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h1>云签到</h1>
+                <form action="/controllers/office/query.php" method="get">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">用户名</label>
+                        <input type="text" class="form-control" name="userName" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">请输入你的真实姓名</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">工号</label>
+                        <input type="number" class="form-control" name="passwd" id="exampleInputPassword1">
+                    </div>
+                    <button type="submit" class="btn btn-primary">签到</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        $.ajax({
+            url: "/controllers/office/text.php",
+            type: "GET",
+            success: function (res) {
+                console.log(res);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        })
+    </script>
+</body>
+
+</html>
